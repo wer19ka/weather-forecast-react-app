@@ -1,5 +1,6 @@
 import React from 'react';
 import WeatherBox from './components/WeatherBox';
+import configuration from './config';
 import './App.css';
 
 class App extends React.Component {
@@ -7,6 +8,7 @@ class App extends React.Component {
         super();
         this.state = {
             userInput: "",
+            units: "",
             weatherCurrent: null,
             weatherForecast: null
         };
@@ -34,6 +36,7 @@ class App extends React.Component {
 
     componentDidMount() {
         this.getDate();
+        this.setUnits(configuration.units);
     }
 
     getDate = () => {
@@ -50,11 +53,23 @@ class App extends React.Component {
         });
     };
 
+    setUnits = (units) => {
+        switch (units) {
+            case "celsius":
+                this.setState({units: "metric"});
+                break;
+            case "fahrenheit":
+                this.setState({units: "imperial"});
+                break;
+        }
+    };
+
     getWeatherCurrent = (e) => {
         e.preventDefault();
         if (this.state.userInput) {
             const userInput = this.state.userInput;
-            fetch(`http://api.openweathermap.org/data/2.5/weather?q=${userInput}&units=metric&APPID=b6907d289e10d714a6e88b30761fae22`)
+            const units = this.state.units;
+            fetch(`http://api.openweathermap.org/data/2.5/weather?q=${userInput}&units=${units}&APPID=${configuration["api-key"]}`)
                 .then(response => {
                     if (response.ok) {
                         response.json()
@@ -70,7 +85,8 @@ class App extends React.Component {
         e.preventDefault();
         if (this.state.userInput) {
             const userInput = this.state.userInput;
-            fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${userInput}&units=metric&APPID=b6907d289e10d714a6e88b30761fae22`)
+            const units = this.state.units;
+            fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${userInput}&units=${units}&APPID=${configuration["api-key"]}`)
                 .then(response => {
                     if (response.ok) {
                         response.json()
