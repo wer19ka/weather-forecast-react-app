@@ -123,31 +123,13 @@ class App extends React.Component {
         const weatherForecastFiltered = this.prepareForecastData();
         return (
             <section className="Weather-forecast">
-                <WeatherBox
-                    weather={weatherForecastFiltered[0].weather[0].description}
-                    temperature={weatherForecastFiltered[0].main.temp}
-                    pressure={weatherForecastFiltered[0].main.pressure}
-                    humidity={weatherForecastFiltered[0].main.humidity}/>
-                <WeatherBox
-                    weather={weatherForecastFiltered[1].weather[0].description}
-                    temperature={weatherForecastFiltered[1].main.temp}
-                    pressure={weatherForecastFiltered[1].main.pressure}
-                    humidity={weatherForecastFiltered[1].main.humidity}/>
-                <WeatherBox
-                    weather={weatherForecastFiltered[2].weather[0].description}
-                    temperature={weatherForecastFiltered[2].main.temp}
-                    pressure={weatherForecastFiltered[2].main.pressure}
-                    humidity={weatherForecastFiltered[2].main.humidity}/>
-                <WeatherBox
-                    weather={weatherForecastFiltered[3].weather[0].description}
-                    temperature={weatherForecastFiltered[3].main.temp}
-                    pressure={weatherForecastFiltered[3].main.pressure}
-                    humidity={weatherForecastFiltered[3].main.humidity}/>
-                <WeatherBox
-                    weather={weatherForecastFiltered[4].weather[0].description}
-                    temperature={weatherForecastFiltered[4].main.temp}
-                    pressure={weatherForecastFiltered[4].main.pressure}
-                    humidity={weatherForecastFiltered[4].main.humidity}/>
+                {weatherForecastFiltered.map(item => (
+                    <WeatherBox
+                        key={item.dt}
+                        weather={item.weather[0].description}
+                        temperature={item.main.temp}
+                        pressure={item.main.pressure}
+                        humidity={item.main.humidity}/>))}
             </section>
         );
     };
