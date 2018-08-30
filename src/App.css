@@ -1,30 +1,100 @@
-.App {
+button {
+    padding: 0.5rem 2rem;
+    border: 1px #ccc solid;
+    border-radius: 50px;
+    background-color: #f2f2f2;
+    color: #444444;
+    margin: 1rem 0.4rem;
+    transition: background-color 300ms ease;
+}
+
+button:hover {
+    background-color: #e2e2e2;
+}
+
+input {
+    padding: 0.5rem;
+    border: 1px #ccc solid;
+    border-radius: 50px;
+    background-color: #ffffff;
+    margin: 1rem 0.4rem;
+}
+
+.app {
     text-align: center;
-    margin: 5px auto;
-    width: 80%;
+    margin: 15px auto;
+    width: 70%;
     background-color: #ffffff;
     border-radius: 5px;
+    color: #444444;
+}
+
+.app-header {
     padding: 10px;
 }
 
-.App-header {
-    padding: 20px;
-}
-
-.App-title {
+.app-title {
     font-size: 1.5em;
 }
 
-.Weather-current {
-    background-color: #f2f2f2;
-    /*display: none;*/
-    margin: 10px;
-    padding: 20px;
+.weather-current, .weather-forecast {
+    display: flex;
+    margin: 0;
+    padding: 10px;
 }
 
-.Weather-forecast {
-    background-color: #f2f2f2;
-    /*display: none;*/
-    padding: 20px;
-    margin: 10px;
+.weather-current {
+    background: #f2f2f2 url("https://source.unsplash.com/8iZG31eXkks") no-repeat center;
+    background-size: cover;
+    flex-direction: column;
+    align-items: center;
+}
+
+.weather-forecast {
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.weather-current button {
+    background-color: #484848;
+    color: #f2f2f2;
+    border-color: #555555;
+}
+
+.weather-current button:hover {
+    background-color: #333333;
+}
+
+.weather-current h2, .weather-current h5 {
+    text-shadow: 0.05rem 0.05rem #f2f2f2;
+}
+
+@media (max-width: 1200px) {
+    .app {
+        width: 90%;
+    }
+}
+
+@media (max-width: 920px) {
+    .app {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border-radius: 0;
+    }
+}
+
+@media (max-width: 420px) {
+    button {
+        margin: 0.4rem 0.4rem;
+    }
+
+    input {
+        margin: 0.4rem 0.4rem;
+    }
+
+    form {
+        margin-bottom: 20px;
+    }
+
 }

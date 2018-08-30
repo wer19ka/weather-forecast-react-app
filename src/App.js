@@ -18,11 +18,11 @@ class App extends React.Component {
         const weatherCurrent = this.state.weatherCurrent;
         const weatherForecast = this.state.weatherForecast;
         return (
-            <div className="App">
-                <header className="App-header">
-                    <h1 className="App-title">Weather Forecast</h1>
+            <div className="app">
+                <header className="app-header">
+                    <h1 className="app-title">Weather Forecast</h1>
                 </header>
-                <main className="App-container">
+                <main className="app-container">
                     <form>
                         <input type="text" placeholder="City..." onInputCapture={this.getUserInput} autoFocus={true}/>
                         <button onClick={this.getWeatherCurrent}>Get current weather!</button>
@@ -106,9 +106,9 @@ class App extends React.Component {
     renderWeatherCurrent = () => {
         const weatherCurrent = this.state.weatherCurrent;
         return (
-            <section className="Weather-forecast">
-                <p>{this.state.date}</p>
-                <h3>Current weather in {this.state.userInput}:</h3>
+            <section className="weather-current">
+                <h5>{this.state.date}</h5>
+                <h2>Currently in {this.state.userInput}:</h2>
                 <WeatherBox
                     weather={weatherCurrent.weather[0].description}
                     temperature={weatherCurrent.main.temp}
@@ -123,7 +123,7 @@ class App extends React.Component {
     renderWeatherForecast = () => {
         const weatherForecastFiltered = this.prepareForecastData();
         return (
-            <section className="Weather-forecast">
+            <section className="weather-forecast">
                 {weatherForecastFiltered.map(item => (
                     <WeatherBox
                         key={item.dt}
