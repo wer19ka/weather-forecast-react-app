@@ -36,3 +36,25 @@
 .icon {
     color: #888888;
 }
+
+@media (max-width: 810px) {
+    .weather-box {
+        max-width: none;
+        align-items: center;
+    }
+
+    .weather-parameters {
+        flex-direction: row;
+    }
+
+    .weather-parameters li {
+        margin: 0 10px;
+    }
+}
+
+@media (max-width: 400px) {
+    .weather-parameters {
+        flex-direction: column;
+        align-items: center;
+    }
+}
