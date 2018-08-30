@@ -56,10 +56,10 @@ class App extends React.Component {
     setUnits = (units) => {
         switch (units) {
             case "celsius":
-                this.setState({units: "metric"});
+                this.setState({units: "metric", unitsSymbol: "°C"});
                 break;
             case "fahrenheit":
-                this.setState({units: "imperial"});
+                this.setState({units: "imperial", unitsSymbol: "°F"});
                 break;
         }
     };
@@ -113,7 +113,8 @@ class App extends React.Component {
                     weather={weatherCurrent.weather[0].description}
                     temperature={weatherCurrent.main.temp}
                     pressure={weatherCurrent.main.pressure}
-                    humidity={weatherCurrent.main.humidity}/>
+                    humidity={weatherCurrent.main.humidity}
+                    units={this.state.unitsSymbol}/>
                 <button onClick={this.getWeatherForecast}>Get 5 days forecast!</button>
             </section>
         );
@@ -129,7 +130,8 @@ class App extends React.Component {
                         weather={item.weather[0].description}
                         temperature={item.main.temp}
                         pressure={item.main.pressure}
-                        humidity={item.main.humidity}/>))}
+                        humidity={item.main.humidity}
+                        units={this.state.unitsSymbol}/>))}
             </section>
         );
     };
